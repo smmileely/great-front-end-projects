@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.io/smmileely/blog-card",
+  "homepage": "https://smmileely.github.io/blog-card",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
