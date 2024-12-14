@@ -7,7 +7,7 @@ function App() {
     <div className='h-[100vh] bg-gradient-to-b from-gray-50 to-[#d2d6db] pt-[200px] flex justify-center'>
       <div className='w-[340px] h-[504px] rounded-[8px] shadow-md bg-white'>
         <img
-          className='w-[340px] h-[288px] rounded-t-[8px]'
+          className='w-[340px] h-[288px] rounded-t-[8px] object-cover'
           src={coverPic}
           alt='living-room'
         />
