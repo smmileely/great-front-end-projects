@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { IoMdArrowForward } from 'react-icons/io';
 
 interface BlogCardProps {
@@ -10,7 +10,7 @@ interface BlogCardProps {
   linkText: string;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({
+const BlogCard: FC<BlogCardProps> = ({
   image,
   tag,
   title,

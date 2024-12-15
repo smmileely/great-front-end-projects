@@ -1,22 +1,15 @@
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import BlogCard from './components/blog-card';
-import coverPic from './assets/spacejoy-unsplash.jpg';
+import BlogCardPage from './pages/blog-card-page';
+import NotFoundPage from './pages/not-found-page';
 
-function App() {
+const App = () => {
   return (
-    <div className='h-[100vh] bg-gradient-to-b from-gray-50 to-[#d2d6db] pt-[120px] flex justify-center'>
-      <BlogCard
-        image={coverPic}
-        tag={'Interior'}
-        title={'Top 5 Living Room Inspirations'}
-        info={
-          'Curated vibrants colors for your living, make it pop & calm in the same time.'
-        }
-        link={''}
-        linkText={'Read more'}
-      />
-    </div>
+    <Routes>
+      <Route path='/blog-card' element={<BlogCardPage />} />
+      <Route path='*' element={<NotFoundPage />} />
+    </Routes>
   );
-}
+};
 
 export default App;
