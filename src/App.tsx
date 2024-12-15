@@ -7,7 +7,7 @@ import ProfileCardPage from './pages/profile-card-page';
 const App = () => {
   return (
     <Routes>
-      <Route path='/blog-card' element={<BlogCardPage />} />
+      <Route path='/' element={<BlogCardPage />} />
       <Route path='/profile-card' element={<ProfileCardPage />} />
       <Route path='*' element={<NotFoundPage />} />
     </Routes>
