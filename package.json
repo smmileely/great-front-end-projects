@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://smmileely.github.io/blog-card",
+  "homepage": "https://smmileely.github.io/great-front-end-projects",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -15,7 +15,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
-    "react-router-dom": "^7.0.2"
+    "react-router-dom": "^7.0.2",
+    "remixicon": "^4.5.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
