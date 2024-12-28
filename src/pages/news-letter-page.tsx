@@ -17,6 +17,7 @@ const NewsLetterPage = () => {
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
+    // Clear error message when input changes
     if (status.type === 'error' && (!email || !validateEmail(email))) {
       setStatus({ type: null, message: '' });
     }
@@ -61,7 +62,9 @@ const NewsLetterPage = () => {
       if (!response.ok) {
         setStatus({
           type: 'error',
-          message: data.error || 'Failed to subscribe. Please try again later.',
+          message:
+            data.error ||
+            'Failed to subscribe. Please ensure your email is correct or try again later.',
         });
         return;
       }
