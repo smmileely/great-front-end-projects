@@ -17,7 +17,6 @@ const NewsLetterPage = () => {
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-    // Clear error message when input changes
     if (status.type === 'error' && (!email || !validateEmail(email))) {
       setStatus({ type: null, message: '' });
     }
@@ -62,9 +61,7 @@ const NewsLetterPage = () => {
       if (!response.ok) {
         setStatus({
           type: 'error',
-          message:
-            data.error ||
-            'Failed to subscribe. Please ensure your email is correct or try again later.',
+          message: data.error || 'Failed to subscribe. Please try again later.',
         });
         return;
       }
@@ -77,8 +74,7 @@ const NewsLetterPage = () => {
     } catch {
       setStatus({
         type: 'error',
-        message:
-          'Failed to subscribe. Please ensure your email is correct or try again later.',
+        message: 'Failed to subscribe. Please try again later.',
       });
     } finally {
       setIsLoading(false);
@@ -88,30 +84,34 @@ const NewsLetterPage = () => {
   return (
     <div className='min-h-screen bg-gradient-to-b from-gray-50 to-[#d2d6db] flex flex-col items-center'>
       <div className='p-4 flex-1 flex items-center w-full relative'>
-        {status.type === 'error' && !(!email || !validateEmail(email)) && (
-          <div className='absolute left-1/2 -translate-x-1/2 top-8 z-10'>
-            <div className='flex items-center gap-2 bg-red-50 py-1 pl-1 pr-2.5 rounded-[2000px] shadow-sm'>
-              <div className='bg-white shadow-sm rounded-full px-2 py-0.5 text-sm font-medium text-red-800'>
-                Error
+        {/* Status Messages */}
+        {status.type && !(!email || !validateEmail(email)) && (
+          <div className='fixed top-8 left-1/2 -translate-x-1/2 z-10'>
+            <div
+              className={`flex items-center gap-2 ${
+                status.type === 'success' ? 'bg-green-50' : 'bg-red-50'
+              } py-1 pl-1 pr-2.5 rounded-[2000px] shadow-sm`}
+            >
+              <div
+                className={`bg-white shadow-sm rounded-full px-2 py-0.5 text-sm font-medium ${
+                  status.type === 'success' ? 'text-green-800' : 'text-red-800'
+                }`}
+              >
+                {status.type === 'success' ? 'Success' : 'Error'}
               </div>
-              <p className='text-sm text-red-800'>{status.message}</p>
-            </div>
-          </div>
-        )}
-
-        {status.type === 'success' && (
-          <div className='absolute left-1/2 -translate-x-1/2 top-8 z-10'>
-            <div className='flex items-center gap-2 bg-green-50 py-1 pl-1 pr-2.5 rounded-[2000px] shadow-sm'>
-              <div className='bg-white shadow-sm rounded-full px-2 py-0.5 text-sm font-medium text-green-800'>
-                Success
-              </div>
-              <p className='text-sm text-green-800'>{status.message}</p>
+              <p
+                className={`text-sm ${
+                  status.type === 'success' ? 'text-green-800' : 'text-red-800'
+                }`}
+              >
+                {status.message}
+              </p>
             </div>
           </div>
         )}
 
         <div className='bg-white w-full max-w-[1408px] min-h-[800px] rounded-[6px] p-8 md:p-16 lg:p-24 mx-auto'>
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-12 h-full'>
+          <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 h-full'>
             <div>
               <h1 className='text-[32px] md:text-[40px] lg:text-[48px] leading-tight font-semibold text-neutral-900'>
                 Get the finest curated abstracts delivered weekly to your inbox
@@ -202,7 +202,7 @@ const NewsLetterPage = () => {
               </p>
             </div>
 
-            <div className='hidden md:block relative'>
+            <div className='relative'>
               <div className='relative'>
                 <img
                   src={abstractImage}
